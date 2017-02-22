@@ -1,3 +1,7 @@
+build war maven
+deployment in tomcat
+
+
 CREATE TABLE EVENT(
     id INT NOT NULL auto_increment,
     name VARCHAR(50) NOT NULL,

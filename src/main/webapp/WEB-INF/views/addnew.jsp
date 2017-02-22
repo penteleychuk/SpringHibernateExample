@@ -7,7 +7,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>Employee Registration Form</title>
+	<title>Add New Event</title>
 
 <style>
 
@@ -20,7 +20,7 @@
 
 <body>
 
-	<h2>Registration Form</h2>
+	<h2>Event Form</h2>
  
 	<form:form method="POST" modelAttribute="event">
 		<form:input type="hidden" path="id" id="id"/>
@@ -59,6 +59,6 @@
 	</form:form>
 	<br/>
 	<br/>
-	Go back to <a href="<c:url value='/list' />">List of All Employees</a>
+	Go back to <a href="<c:url value='/list' />">List of All Eventss</a>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>University Enrollments</title>
+	<title>List Events</title>
 
 	<style>
 		tr:first-child{
@@ -17,7 +17,7 @@
 
 
 <body>
-	<h2>List of Employees</h2>	
+	<h2>List of Events</h2>
 	<table>
 		<tr>
 			<td>NAME</td>
@@ -37,6 +37,6 @@
 		</c:forEach>
 	</table>
 	<br/>
-	<a href="<c:url value='/new' />">Add New Employee</a>
+	<a href="<c:url value='/new' />">Add New Events</a>
 </body>
 </html>

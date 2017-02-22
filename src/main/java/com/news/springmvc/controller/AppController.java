@@ -46,7 +46,7 @@ public class AppController {
 		Event event = new Event();
 		model.addAttribute("event", event);
 		model.addAttribute("edit", false);
-		return "registration";
+		return "addnew";
 	}
 
 	/*
@@ -58,21 +58,16 @@ public class AppController {
 							   ModelMap model) {
 
 		if (result.hasErrors()) {
-			return "registration";
+			return "addnew";
 		}
 
 		/*
-		 * Preferred way to achieve uniqueness of field [description] should be implementing custom @Unique annotation
-		 * and applying it on field [description] of Model class [Event].
-		 * 
-		 * Below mentioned peace of code [if block] is to demonstrate that you can fill custom errors outside the validation
-		 * framework as well while still using internationalized messages.
-		 * 
+		 * Preferred way to achieve uniqueness of field [description]
 		 */
 		if(!service.isEventNameUnique(event.getId(), event.getName())){
 			FieldError nameError =new FieldError("event","name",messageSource.getMessage("non.unique.name", new String[]{event.getName()}, Locale.getDefault()));
 		    result.addError(nameError);
-			return "registration";
+			return "addnew";
 		}
 		
 		service.saveEvent(event);
@@ -90,25 +85,25 @@ public class AppController {
 		Event event = service.findEventByName(name);
 		model.addAttribute("event", event);
 		model.addAttribute("edit", true);
-		return "registration";
+		return "addnew";
 	}
 	
 	/*
-	 * This method will be called on form submission, handling POST request for
-	 * updating event in database. It also validates the user input
+	 * This method will be called  for updating event in database.
+	 * It also validates the user input
 	 */
 	@RequestMapping(value = { "/edit-{name}-event" }, method = RequestMethod.POST)
 	public String updateEvent(@Valid Event event, BindingResult result,
 								 ModelMap model, @PathVariable String name) {
 
 		if (result.hasErrors()) {
-			return "registration";
+			return "addnew";
 		}
 
 		if(!service.isEventNameUnique(event.getId(), event.getName())){
 			FieldError nameError =new FieldError("event","name",messageSource.getMessage("non.unique.name", new String[]{event.getName()}, Locale.getDefault()));
 		    result.addError(nameError);
-			return "registration";
+			return "addnew";
 		}
 
 		service.updateEvent(event);
