@@ -6,7 +6,7 @@ CREATE TABLE EVENT(
     PRIMARY KEY (id)
 );
 
-INSERT INTO test.event (name, create_date, description) VALUES ('name1', '2018-02-09', 'description description description ');
-INSERT INTO test.event (name, create_date, description) VALUES ('name2', '2015-12-12', 'test test test');
-INSERT INTO test.event (name, create_date, description) VALUES ('name3', '2011-10-10', 'query query query');
-INSERT INTO test.event (name, create_date, description) VALUES ('name56', '2011-10-10', 'readme readme');
+INSERT INTO event (name, create_date, description) VALUES ('name1', '2018-02-09', 'description description description ');
+INSERT INTO event (name, create_date, description) VALUES ('name2', '2015-12-12', 'test test test');
+INSERT INTO event (name, create_date, description) VALUES ('name3', '2011-10-10', 'query query query');
+INSERT INTO event (name, create_date, description) VALUES ('name56', '2011-10-10', 'readme readme');
