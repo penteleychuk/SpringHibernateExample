@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Event Confirmation</title>
+<title>Event Confirmation Page</title>
 </head>
 <body>
 	message : ${success}

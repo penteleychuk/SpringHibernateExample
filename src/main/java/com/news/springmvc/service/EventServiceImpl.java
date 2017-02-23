@@ -25,7 +25,8 @@ public class EventServiceImpl implements EventService {
 	}
 
 	/*
-	 * Since the method is running with Transaction, No need to call hibernate update explicitly.
+	 * Since the method is running with Transaction.
+	 * It will be updated in db once transaction ends. 
 	 */
 	public void updateEvent(Event event) {
 		Event entity = dao.findById(event.getId());

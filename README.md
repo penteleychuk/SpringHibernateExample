@@ -1,5 +1,5 @@
-build war maven
-deployment in tomcat
+build war maven;
+deployment in tomcat 8.0;
 
 
 CREATE TABLE EVENT(

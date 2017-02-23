@@ -46,28 +46,33 @@ public class AppController {
 		Event event = new Event();
 		model.addAttribute("event", event);
 		model.addAttribute("edit", false);
-		return "addnew";
+		return "addnews";
 	}
 
 	/*
 	 * This method will be called on form submission, handling POST request for
-	 * saving event in database. It also validates the user input
+	 * saving event in database.
 	 */
 	@RequestMapping(value = { "/new" }, method = RequestMethod.POST)
 	public String saveEvent(@Valid Event event, BindingResult result,
 							   ModelMap model) {
 
 		if (result.hasErrors()) {
-			return "addnew";
+			return "addnews";
 		}
 
 		/*
-		 * Preferred way to achieve uniqueness of field [description]
+		 * Preferred way to achieve uniqueness of field [description] should be implementing custom @Unique annotation
+		 * and applying it on field [description] of Model class [Event].
+		 * 
+		 * Below mentioned peace of code [if block] is to demonstrate that you can fill custom errors outside the validation
+		 * framework as well while still using internationalized messages.
+		 * 
 		 */
 		if(!service.isEventNameUnique(event.getId(), event.getName())){
 			FieldError nameError =new FieldError("event","name",messageSource.getMessage("non.unique.name", new String[]{event.getName()}, Locale.getDefault()));
 		    result.addError(nameError);
-			return "addnew";
+			return "addnews";
 		}
 		
 		service.saveEvent(event);
@@ -85,25 +90,25 @@ public class AppController {
 		Event event = service.findEventByName(name);
 		model.addAttribute("event", event);
 		model.addAttribute("edit", true);
-		return "addnew";
+		return "addnews";
 	}
 	
 	/*
-	 * This method will be called  for updating event in database.
-	 * It also validates the user input
+	 * This method will be called on form submission, handling POST request for
+	 * updating event in database. It also validates the user input
 	 */
 	@RequestMapping(value = { "/edit-{name}-event" }, method = RequestMethod.POST)
 	public String updateEvent(@Valid Event event, BindingResult result,
 								 ModelMap model, @PathVariable String name) {
 
 		if (result.hasErrors()) {
-			return "addnew";
+			return "addnews";
 		}
 
 		if(!service.isEventNameUnique(event.getId(), event.getName())){
 			FieldError nameError =new FieldError("event","name",messageSource.getMessage("non.unique.name", new String[]{event.getName()}, Locale.getDefault()));
 		    result.addError(nameError);
-			return "addnew";
+			return "addnews";
 		}
 
 		service.updateEvent(event);
